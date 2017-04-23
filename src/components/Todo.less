@@ -1,0 +1,70 @@
+.root {
+    padding: 16px;
+    padding-left: 46px;
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+
+    &:hover .remove {
+        display: block;
+    }
+}
+
+.completed {
+    composes: root;
+
+    text-decoration: line-through;
+    font-style: italic;
+    color: lightgrey;
+}
+
+.remove {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: none;
+    font-style: normal;
+}
+
+.check {
+    position: absolute;
+    content: "";
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 2px solid #ddd;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+}
+
+.checkCompleted {
+    composes: check;
+
+    border-color: green;
+    background-color: green;
+
+    &::before {
+        content: "";
+        position: absolute;
+        width: 12px;
+        height: 5px;
+        border-left: 2px solid #fff;
+        border-bottom: 2px solid #fff;
+        transform: rotate(-45deg) translateY(-50%);
+        transform-origin: left bottom;
+        left: 10px;
+        top: ~"calc(50% + 1px)";
+    }
+}
+
+.tags {
+    position: absolute;
+    bottom: 0;
+    left: 50px;
+    font-size: 10px;
+     & > span:not(:last-child) {
+         margin-right: 10px;
+     }
+}
